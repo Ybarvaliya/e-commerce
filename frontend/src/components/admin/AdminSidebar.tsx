@@ -19,9 +19,9 @@ const AdminSidebar = () => {
   // const location = useLocation();
 
   return (
-    <aside className="ml-4 text-lg">
-      <div className="text-2xl m-3">Logo.</div>
-      <div className="text-slate-700 text-xl m-4">DASHBOARD</div>
+    <aside className="mt-5 ml-4 text-lg bg-slate-100 w-1/6 p-5 h-full rounded-xl">
+      <div className="text-2xl mb-2">Logo.</div>
+      <div className="text-slate-600 text-xl ml-4 my-6">DASHBOARD</div>
       <Item
         URL="/admin/dashboard"
         Icon={RiDashboardFill}
@@ -38,11 +38,11 @@ const AdminSidebar = () => {
         Icon={AiFillFileText}
         title="Transaction"
       ></Item>
-      <div className="text-slate-700 text-xl m-4">CHARTS</div>
+      <div className="text-slate-600 text-xl ml-4 my-6">CHARTS</div>
       <Item URL="" Icon={FaChartBar} title="Bar"></Item>
       <Item URL="" Icon={FaChartPie} title="Pie"></Item>
       <Item URL="" Icon={FaChartLine} title="Line"></Item>
-      <div className="text-slate-700 text-xl m-4">APPS</div>
+      <div className="text-slate-600 text-xl ml-4 my-6">APPS</div>
       <Item URL="" Icon={FaStopwatch} title="stopwatch"></Item>
       <Item URL="" Icon={RiCoupon3Fill} title="Coupan"></Item>
       <Item URL="" Icon={FaGamepad} title="Toss"></Item>
