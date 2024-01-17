@@ -8,8 +8,9 @@ import {
   Legend,
   ChartData,
   ChartOptions,
+  ArcElement
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -17,7 +18,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
 const months = ["January", "February", "March", "April", "May", "June", "July"];
@@ -56,13 +58,13 @@ export const BarChart = ({
       },
     },
     scales: {
-        y: {
-            beginAtZero: true
-        },
-        x: {
-            beginAtZero: true   
-        }
-    }
+      y: {
+        beginAtZero: true,
+      },
+      x: {
+        beginAtZero: true,
+      },
+    },
   };
 
   const data: ChartData<"bar", number[], string> = {
@@ -73,14 +75,14 @@ export const BarChart = ({
         data: data_1,
         backgroundColor: bg_color_1,
         barPercentage: 1,
-        categoryPercentage: 0.4
+        categoryPercentage: 0.4,
       },
       {
         label: title_2,
         data: data_2,
         backgroundColor: bg_color_2,
         barPercentage: 1,
-        categoryPercentage: 0.4
+        categoryPercentage: 0.4,
       },
     ],
   };
@@ -90,4 +92,50 @@ export const BarChart = ({
       <Bar options={options} data={data} />
     </div>
   );
+};
+
+interface DoughnutChartProps {
+  labels: string[];
+  data: number[];
+  bgcolor: string[];
+  cutout?: number | string;
+  legends?: boolean;
+  offset?: number[];
+}
+
+export const DoughnutChart = ({
+  labels,
+  data,
+  bgcolor,
+  cutout,
+  legends = true,
+  offset,
+}: DoughnutChartProps) => {
+  const doughnutData: ChartData<"doughnut", number[], string> = {
+    labels,
+    datasets: [
+      {
+        data,
+        backgroundColor: bgcolor,
+        borderWidth: 0,
+        offset,
+      },
+    ],
+  };
+
+  const doughnutOptions: ChartOptions<"doughnut"> = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: legends,
+        position: "bottom",
+        labels: {
+          padding: 40,
+        }
+      },
+    },
+    cutout
+  };
+
+  return <Doughnut data={doughnutData} options={doughnutOptions}></Doughnut>;
 };

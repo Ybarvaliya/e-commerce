@@ -1,9 +1,10 @@
 import AdminSidebar from "../../components/admin/AdminSidebar";
+import { BarChart, DoughnutChart } from "../../components/admin/Charts";
 
 import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
-import { BarChart } from "../../components/admin/Charts";
+import { BiMaleFemale } from "react-icons/bi";
 
 const Dashboard = () => {
   return (
@@ -18,7 +19,7 @@ const Dashboard = () => {
           </span>
           <input
             type="text"
-            className="w-full border border-black m-2 text-md p-3 h-10 rounded-md"
+            className="w-full border border-black m-2 text-md p-2 h-10 rounded-lg"
           />
           <FaRegBell className="m-2 mt-5 "></FaRegBell>
           <img src="" alt="user_image" className="m-2 mt-5 " />
@@ -55,6 +56,32 @@ const Dashboard = () => {
           </div>
 
           <Inventory></Inventory>
+        </div>
+
+        {/* Gender ratio & Top Transactions */}
+
+        <div className="flex">
+          <div className="bg-white m-2 w-1/3 rounded-lg">
+            <h1 className="text-center text-xl my-2 font-semibold">
+              Gender Ratio
+            </h1>
+            <DoughnutChart
+              data={[12, 19]}
+              labels={["Female", "Male"]}
+              bgcolor={["hsl(340, 82%, 56%)", "rgba(53, 162, 235, 0.8)"]}
+              cutout={90}
+            ></DoughnutChart>
+
+            <p className="">
+              <BiMaleFemale></BiMaleFemale>
+            </p>
+          </div>
+
+          <div className="bg-white m-2 w-1/3 rounded-lg">
+            <h1 className="text-center text-xl my-2 font-semibold">
+              Top Transactions
+            </h1>
+          </div>
         </div>
       </main>
     </div>
@@ -119,7 +146,7 @@ const Disk = ({ percentage, color }: diskProp) => {
 const Inventory = () => {
   return (
     <div className="bg-white w-1/4 rounded-lg m-2 ml-5 h-auto">
-      <h1 className="text-center text-xl m-2 font-semibold">Inventory</h1>
+      <h1 className="text-center text-xl m-2 my-4 font-semibold">Inventory</h1>
       <div className="m-4">
         <InventoryItem
           heading="Shoes"
