@@ -3,6 +3,7 @@ import AdminSidebar from "../../components/admin/AdminSidebar";
 import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
+import { BarChart } from "../../components/admin/Charts";
 
 const Dashboard = () => {
   return (
@@ -36,10 +37,23 @@ const Dashboard = () => {
           <SmallCard title="Products" num="1000" percentage={30}></SmallCard>
         </div>
 
-        {/* R&T Chart & Inventory */}
+        {/* R&T & Inventory */}
 
         <div className="flex">
-          <RTChart></RTChart>
+          <div className="bg-white w-4/6 rounded-lg m-2 ml-5 p-2">
+            <h1 className="text-center text-xl my-2 font-semibold">
+              Revenue & Transactions
+            </h1>
+            <BarChart
+              title_1="Revenue"
+              title_2="Transactions"
+              data_1={[300, 144, 433, 655, 237, 755, 190]}
+              data_2={[200, 444, 343, 556, 778, 455, 990]}
+              bg_color_1="rgb(0,115,255)"
+              bg_color_2="rgb(53, 162, 235, 0.8)"
+            ></BarChart>
+          </div>
+
           <Inventory></Inventory>
         </div>
       </main>
@@ -82,7 +96,7 @@ interface diskProp {
 const Disk = ({ percentage, color }: diskProp) => {
   return (
     <div
-      className="m-5 bg-slate-200 p-3 rounded-full h-20 w-20 place-items-center"
+      className="m-5 bg-slate-200 p-3 rounded-full h-20 w-20 place-items-center border"
       style={{
         background: `conic-gradient(
     ${color} ${(Math.abs(percentage) / 100) * 360}deg,
@@ -102,45 +116,35 @@ const Disk = ({ percentage, color }: diskProp) => {
   );
 };
 
-const RTChart = () => {
-  return (
-    <div className="bg-white h-60 w-4/6 rounded-lg m-2 ml-5">
-      <h1 className="text-center text-xl m-2 font-semibold">
-        Revenue & Transactions
-      </h1>
-    </div>
-  );
-};
-
 const Inventory = () => {
   return (
-    <div className="bg-white w-1/4 rounded-lg m-2 ml-5">
+    <div className="bg-white w-1/4 rounded-lg m-2 ml-5 h-auto">
       <h1 className="text-center text-xl m-2 font-semibold">Inventory</h1>
       <div className="m-4">
         <InventoryItem
-          heading="Laptops"
-          color="rgb(137, 196, 244)"
-          value={12}
-        ></InventoryItem>
-        <InventoryItem
           heading="Shoes"
-          color="rgb(137, 196, 244)"
+          color="rgb(93, 63, 211)"
           value={40}
         ></InventoryItem>
         <InventoryItem
-          heading="Camera"
-          color="rgb(137, 196, 244)"
-          value={57}
-        ></InventoryItem>
-        <InventoryItem
-          heading="Geans"
-          color="rgb(137, 196, 244)"
-          value={80}
+          heading="Laptops"
+          color="rgb(93, 63, 211)"
+          value={12}
         ></InventoryItem>
         <InventoryItem
           heading="Shirts"
-          color="rgb(137, 196, 244)"
+          color="rgb(93, 63, 211)"
           value={100}
+        ></InventoryItem>
+        <InventoryItem
+          heading="Geans"
+          color="rgb(93, 63, 211)"
+          value={80}
+        ></InventoryItem>
+        <InventoryItem
+          heading="Camera"
+          color="rgb(93, 63, 211)"
+          value={57}
         ></InventoryItem>
       </div>
     </div>
@@ -156,14 +160,14 @@ interface InventoryProps {
 const InventoryItem = ({ heading, color, value }: InventoryProps) => {
   return (
     <div className="flex">
-      <div className="m-1 basis-1/4">{heading}</div>
-      <div className="basis-2/4 m-1">
+      <div className="m-1 basis-1/5">{heading}</div>
+      <div className="basis-3/5 m-2 border rounded-lg">
         <div
-          className="px-2 rounded-lg"
-          style={{ backgroundColor: color, width: `${value}%` }}
-        ></div>
+          className={`rounded-lg h-full`}
+          style={{ background: `${color}`, width: `${value}%` }}
+        />
       </div>
-      <div className="basis-1/4">{value}%</div>
+      <div className="basis-1/5">{value}%</div>
     </div>
   );
 };
