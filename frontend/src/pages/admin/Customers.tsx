@@ -1,8 +1,7 @@
 import { Column } from "react-table";
 import TableHOC from "../../components/admin/Table/Table";
 import { ReactElement, useCallback, useState } from "react";
-import { Link } from "react-router-dom";
-import { FaPlus, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import AdminSidebar from "../../components/admin/AdminSidebar";
 
 interface DataType {
@@ -98,12 +97,9 @@ const Customers = () => {
   return (
     <div className="flex">
       <AdminSidebar />
-      <div className="mt-5 mx-2 rounded-lg bg-slate-100 w-full flex">
-        <main className="w-full">{Table()}</main>
-        <Link to="/admin/product/new" className="m-6">
-          <FaPlus />
-        </Link>
-      </div>
+      <main className="mt-5 mx-2 rounded-lg bg-slate-100 w-full">
+        {Table()}
+      </main>
     </div>
   );
 };
