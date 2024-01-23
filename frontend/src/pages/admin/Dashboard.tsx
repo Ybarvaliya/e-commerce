@@ -5,6 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import { BiMaleFemale } from "react-icons/bi";
+import DashboardTable from "../../components/admin/DashboardTable";
 
 const Dashboard = () => {
   return (
@@ -81,6 +82,7 @@ const Dashboard = () => {
             <h1 className="text-center text-xl my-2 font-semibold">
               Top Transactions
             </h1>
+            <DashboardTable></DashboardTable>
           </div>
         </div>
       </main>
