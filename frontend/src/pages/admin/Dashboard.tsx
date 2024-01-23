@@ -5,6 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import { BiMaleFemale } from "react-icons/bi";
+import data from '../../components/admin/data.json'
 import DashboardTable from "../../components/admin/DashboardTable";
 
 const Dashboard = () => {
@@ -78,8 +79,8 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <div className="bg-white m-2  rounded-lg">
-            <DashboardTable></DashboardTable>
+          <div className="bg-white rounded-lg m-2 ">
+          <DashboardTable data={data.transaction} />
           </div>
         </div>
       </main>

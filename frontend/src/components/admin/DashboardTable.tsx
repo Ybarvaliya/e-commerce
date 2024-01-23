@@ -1,8 +1,15 @@
-import TableComponent, { Transactions } from "./Table/Table";
-import data from "./data.json";
+import TableHOC from "./Table/Table";
 import { Column } from "react-table";
 
-const columns: Column<Transactions>[] = [
+interface DataType {
+  id: string;
+  quantity: number;
+  discount: number;
+  amount: number;
+  status: string;
+}
+
+const columns: Column<DataType>[] = [
   {
     Header: "Id",
     accessor: "id",
@@ -25,17 +32,12 @@ const columns: Column<Transactions>[] = [
   },
 ];
 
-const DashboardTable = () => {
-  return (
-    <div className="m-2 p-2">
-      <TableComponent
-        data={data.transaction}
-        columns={columns}
-        heading="Top Transactions"
-        showPagination={false}
-      ></TableComponent>
-    </div>
-  );
+const DashboardTable = ({ data = [] }: { data: DataType[] }) => {
+  return TableHOC<DataType>(
+    columns,
+    data,
+    "transaction-box"
+  )();
 };
 
 export default DashboardTable;
