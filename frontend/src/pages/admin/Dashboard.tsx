@@ -78,10 +78,7 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <div className="bg-white m-2 w-1/3 rounded-lg">
-            <h1 className="text-center text-xl my-2 font-semibold">
-              Top Transactions
-            </h1>
+          <div className="bg-white m-2  rounded-lg">
             <DashboardTable></DashboardTable>
           </div>
         </div>

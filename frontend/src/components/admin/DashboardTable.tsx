@@ -27,14 +27,14 @@ const columns: Column<Transactions>[] = [
 
 const DashboardTable = () => {
   return (
-    <>
+    <div className="m-2 p-2">
       <TableComponent
         data={data.transaction}
         columns={columns}
         heading="Top Transactions"
         showPagination={false}
       ></TableComponent>
-    </>
+    </div>
   );
 };
 

@@ -1,5 +1,15 @@
-// Table.tsx
-import { Column, TableOptions, usePagination, useSortBy, useTable } from "react-table";
+import './Table.css'
+import {
+  AiOutlineSortAscending,
+  AiOutlineSortDescending,
+} from "react-icons/ai";
+import {
+  Column,
+  TableOptions,
+  usePagination,
+  useSortBy,
+  useTable,
+} from "react-table";
 
 export interface Transactions {
   id: string;
@@ -22,7 +32,6 @@ const TableComponent = ({
   heading,
   showPagination = false,
 }: TableComponentProps) => {
-
   const options: TableOptions<Transactions> = {
     columns,
     data,
@@ -43,16 +52,11 @@ const TableComponent = ({
     canNextPage,
     state: { pageIndex },
     pageCount,
-    gotoPage,
-  }: any = useTable(
-    options,
-    useSortBy,
-    usePagination
-  );
+  }: any = useTable(options, useSortBy, usePagination);
 
   return (
     <div>
-      <h2 className="">{heading}</h2>
+      <h2 className="text-center text-xl my-2 font-semibold">{heading}</h2>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((hg: any) => (
@@ -61,7 +65,14 @@ const TableComponent = ({
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   {column.isSorted && (
-                    <span>{column.isSortedDesc ? " V" : " A"}</span>
+                    <span>
+                      {" "}
+                      {column.isSortedDesc ? (
+                        <AiOutlineSortDescending />
+                      ) : (
+                        <AiOutlineSortAscending />
+                      )}
+                    </span>
                   )}
                 </th>
               ))}
@@ -85,25 +96,16 @@ const TableComponent = ({
       {/* Pagination */}
       {showPagination && (
         <div>
-          <button disabled={pageIndex === 0} onClick={() => gotoPage(0)}>
-            First
-          </button>{" "}
           <button disabled={!canPreviousPage} onClick={previousPage}>
-            {"<"}
+            {"Prev"}
           </button>
           <span>
             {" "}
             {pageIndex + 1} of {pageCount}{" "}
           </span>
           <button disabled={!canNextPage} onClick={nextPage}>
-            {">"}
+            {"Next"}
           </button>{" "}
-          <button
-            disabled={pageIndex === pageCount - 1}
-            onClick={() => gotoPage(pageCount - 1)}
-          >
-            Last
-          </button>
         </div>
       )}
     </div>
