@@ -36,7 +36,7 @@ const DashboardTable = ({ data = [] }: { data: DataType[] }) => {
   return TableHOC<DataType>(
     columns,
     data,
-    "transaction-box"
+    "Top Transactions"
   )();
 };
 
