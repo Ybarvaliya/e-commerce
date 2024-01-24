@@ -70,7 +70,9 @@ const NewProduct = () => {
             />
           </div>
 
-          {photo && <img src={photo} alt="New Image" className=" mx-10 w-24 h-24"></img>}
+          {photo && (
+            <img src={photo} alt="New Image" className=" mx-10 w-24 h-24"></img>
+          )}
 
           <button
             type="submit"
