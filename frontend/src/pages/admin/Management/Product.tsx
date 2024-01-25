@@ -41,7 +41,7 @@ const Product = () => {
   return (
     <div className="flex">
       <AdminSidebar />
-      <div className="mt-5 mx-5 rounded-lg bg-slate-100 w-full text-center">
+      <div className="mt-5 ml-5 rounded-lg bg-white w-full text-center shadow-lg">
         <div className="flex justify-between mx-20 mt-10">
           <span>ID - {id}</span>
           {stock > 0 ? (

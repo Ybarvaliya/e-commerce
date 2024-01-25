@@ -97,7 +97,7 @@ const Customers = () => {
   return (
     <div className="flex">
       <AdminSidebar />
-      <main className="mt-5 mx-2 rounded-lg bg-slate-100 w-full">
+      <main className="mt-5 mx-2 rounded-lg bg-white w-full shadow-md">
         {Table()}
       </main>
     </div>

@@ -107,7 +107,7 @@ const Products = () => {
   return (
     <div className="flex">
       <AdminSidebar />
-      <div className="mt-5 mx-2 rounded-lg bg-slate-100 w-full flex">
+      <div className="mt-5 mx-2 rounded-lg bg-white w-full flex shadow-md">
         <main className="w-full">{Table()}</main>
         <Link to="/admin/product/new" className="m-6">
           <FaPlus />

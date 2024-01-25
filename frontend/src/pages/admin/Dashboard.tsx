@@ -5,7 +5,8 @@ import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import { BiMaleFemale } from "react-icons/bi";
-import data from '../../components/admin/data.json'
+import userImg from "../../assets/userpic.png";
+import data from "../../components/admin/data.json";
 import DashboardTable from "../../components/admin/DashboardTable";
 
 const Dashboard = () => {
@@ -24,7 +25,7 @@ const Dashboard = () => {
             className="w-full border border-black m-2 text-md p-2 h-10 rounded-lg"
           />
           <FaRegBell className="m-2 mt-5 "></FaRegBell>
-          <img src="" alt="user_image" className="m-2 mt-5 " />
+          <img src={userImg} alt="user_image" className="m-2 mt-3 w-8 h-8 rounded-full" />
         </div>
 
         {/* Small Card Boards */}
@@ -63,24 +64,23 @@ const Dashboard = () => {
         {/* Gender ratio & Top Transactions */}
 
         <div className="flex">
-          <div className="bg-white m-2 w-1/3 rounded-lg">
-            <h1 className="text-center text-xl my-2 font-semibold">
+          <div className="bg-white m-4 w-1/3 rounded-lg relative">
+            <h1 className="text-center text-xl my-4 font-semibold">
               Gender Ratio
             </h1>
+            <p className="absolute left-[45%] top-[45%] text-4xl">
+              <BiMaleFemale></BiMaleFemale>
+            </p>
             <DoughnutChart
               data={[12, 19]}
               labels={["Female", "Male"]}
               bgcolor={["hsl(340, 82%, 56%)", "rgba(53, 162, 235, 0.8)"]}
               cutout={90}
             ></DoughnutChart>
-
-            <p className="">
-              <BiMaleFemale></BiMaleFemale>
-            </p>
           </div>
 
-          <div className="bg-white rounded-lg m-2 ">
-          <DashboardTable data={data.transaction} />
+          <div className="bg-white rounded-lg m-4 w-[60%]">
+            <DashboardTable data={data.transaction} />
           </div>
         </div>
       </main>
